@@ -1,5 +1,5 @@
 # WebHook
-A Web Hook Tool For Discord
+A Web Hook Tool For Discord!
 Made By My Self
 
 # How To Use?
