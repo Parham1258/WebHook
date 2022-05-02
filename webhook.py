@@ -4,7 +4,6 @@ from discord_webhook import DiscordWebhook
 
 class color : 
     Red = '\033[91m'
-    Orange='\033[93m'
     Green = '\033[92m'
     Blue = '\033[94m'
     Cyan = '\033[96m'
@@ -22,13 +21,32 @@ def slowprint(text: str, speed: float, newLine=True):
     if newLine:
         print()
 
+def clear_console():
+    if os.name in ('nt', 'dos'): #Check OS Name
+        try:
+            os.system("cls")
+        except:
+            pass
+    else:
+        try:
+            os.system("clear")
+        except:
+            pass
+
+clear_console()
+
 slowprint(color.Blue+"Web Hook! "+color.Cyan+"Made By Parham! "+color.Yellow+"This Project Is Education Purpose Only!",0.1)
 sleep(1)
 
 try:
   webhook=open("webhook.txt").read()
   if webhook=="env":
-    webhook=os.environ['webhook']
+    try:
+      webhook=os.environ['webhook']
+    except:
+      print(color.Red+"Can't Found Replit Secret! Try Again.")
+      os.remove("webhook.txt")
+      exit()
 except IOError:
   webhook=""
   while webhook=="": #Check If Web Hook URL Empty
@@ -36,8 +54,12 @@ except IOError:
     if webhook=="":
       print(color.Red+"Web Hook URL Is Empty. Please When Ask Them, Respone Them")
     elif webhook=="env":
-      webhook==os.environ['webhook']
-      open("webhook.txt", "w").write("env")
+      try:
+        webhook=os.environ['webhook']
+        open("webhook.txt", "w").write("env")
+      except:
+        print(color.Red+"Can't Found Replit Secret!")
+        webhook=""
     else:
       open("webhook.txt", "w").write(webhook)
 
@@ -66,6 +88,8 @@ while limit=="": #Check If Limit Empty
     except:
       print(color.Red+"Please Enter A Number")
       limit=""
+
+print()
 
 current=0
 if limit==0: #For Forever
