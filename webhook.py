@@ -2,7 +2,7 @@ import os
 from time import sleep
 from discord_webhook import DiscordWebhook
 
-class color : 
+class color : #Credits: Doci Team
     Red = '\033[91m'
     Green = '\033[92m'
     Blue = '\033[94m'
@@ -14,14 +14,14 @@ class color :
     Black = '\033[90m'
     Default = '\033[99m'
 
-def slowprint(text: str, speed: float, newLine=True):
+def slowprint(text: str, speed: float, newLine=True): #Credits: Doci Team
     for i in text:
         print(i, end="", flush=True)
         sleep(speed)
     if newLine:
         print()
 
-def clear_console():
+def clear_console(): #Credits: Doci Team
     if os.name in ('nt', 'dos'): #Check OS Name
         try:
             os.system("cls")
@@ -35,7 +35,7 @@ def clear_console():
 
 clear_console()
 
-slowprint(color.Blue+"Web Hook! "+color.Cyan+"Made By Parham! "+color.Yellow+"This Project Is Education Purpose Only!",0.1)
+slowprint(color.Blue+"Discord WebHook! "+color.Cyan+"Made By Parham! "+color.Yellow+"This Project Is Education Purpose Only!",0.1)
 sleep(1)
 
 try:
@@ -49,10 +49,10 @@ try:
       exit()
 except IOError:
   webhook=""
-  while webhook=="": #Check If Web Hook URL Empty
-    webhook=input(color.Cyan+"Web Hook URL? ('env' For 'webhook' Replit Secret) ")
+  while webhook=="": #Check If WebHook URL Empty
+    webhook=input(color.Cyan+"WebHook URL? ('env' For 'webhook' Replit Secret) ")
     if webhook=="":
-      print(color.Red+"Web Hook URL Is Empty. Please When Ask Them, Respone Them")
+      print(color.Red+"WebHook URL Is Empty. Please When Ask Them, Respone Them")
     elif webhook=="env":
       try:
         webhook=os.environ['webhook']
@@ -66,10 +66,8 @@ except IOError:
 try:
   username=open("username.txt").read()
 except IOError:
-  username=""
-  while username=="": #Check If User Name Empty
-    username=input(color.Yellow+"User Name? ")
-    open("username.txt", "w").write(username)
+  username=input(color.Yellow+"User Name? ")
+  open("username.txt", "w").write(username)
 
 message=""
 while message=="": #Check If Message Empty
@@ -97,7 +95,7 @@ if limit==0: #For Forever
     try:
       DiscordWebhook(url=webhook, username=username, content=message, rate_limit_retry=True).execute()
     except:
-      print(color.Red+"Incorrect Web Hook URL! Try Again.")
+      print(color.Red+"Incorrect WebHook URL! Try Again.")
       break
     current=1+current
     print(color.Red+str(current), "Time!")
@@ -107,7 +105,8 @@ else: #Limited
     try:
       DiscordWebhook(url=webhook, username=username, content=message, rate_limit_retry=True).execute()
     except:
-      print(color.Red+"Incorrect Web Hook URL! Try Again.")
+      print(color.Red+"Incorrect WebHook URL! Try Again.")
+      os.remove("webhook.txt")
       break
     current=1+current
     print(color.Red+str(current), "Time!")
