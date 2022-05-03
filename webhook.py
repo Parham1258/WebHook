@@ -1,6 +1,5 @@
 import os
 from time import sleep
-from discord_webhook import DiscordWebhook
 
 class color : #Credits: Doci Team
     Red = '\033[91m'
@@ -32,6 +31,12 @@ def clear_console(): #Credits: Doci Team
             os.system("clear")
         except:
             pass
+
+try:
+  from discord_webhook import DiscordWebhook
+except:
+  print(color.Red+"Module 'discord_webhook' Not Found!")
+  exit()
 
 clear_console()
 
