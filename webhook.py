@@ -32,7 +32,7 @@ def clear_console(): #Credits: Doci Team
         except:
             pass
 
-try:
+try: #Try To Find Module
   from discord_webhook import DiscordWebhook
 except:
   print(color.Red+"Module 'discord_webhook' Not Found!")
