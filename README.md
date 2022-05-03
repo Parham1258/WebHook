@@ -1,6 +1,6 @@
 # WebHook
 A Web Hook Tool For Discord!
-Made By My Self
+Made By Parham (My Self)
 
 # How To Use?
 You Can Just Run It On Replit:
