@@ -1,3 +1,4 @@
+#A Web Hook Tool For Discord! Made By Parham
 import os
 from time import sleep
 
@@ -40,39 +41,43 @@ except:
 
 clear_console()
 
-slowprint(color.Blue+"Discord WebHook! "+color.Cyan+"Made By Parham! "+color.Yellow+"This Project Is Education Purpose Only!",0.1)
+slowprint(color.Blue+"Discord WebHook!",0.1)
+slowprint(color.Cyan+"Made By Parham!",0.1)
+slowprint(color.Red+"Use With Your Own Risk!",0.1)
+slowprint(color.Yellow+"This Project Is Education Purpose Only!",0.1)
+print()
 sleep(1)
 
 try:
-  webhook=open("webhook.txt").read()
+  webhook=open("WebHook URL.txt").read()
   if webhook=="env":
     try:
-      webhook=os.environ['webhook']
+      webhook=os.environ['WebHook']
     except:
       print(color.Red+"Can't Found Replit Secret! Try Again.")
-      os.remove("webhook.txt")
+      os.remove("WebHook URL.txt")
       exit()
 except IOError:
   webhook=""
   while webhook=="": #Check If WebHook URL Empty
-    webhook=input(color.Cyan+"WebHook URL? ('env' For 'webhook' Replit Secret) ")
+    webhook=input(color.Cyan+"WebHook URL? ('env' For 'WebHook' Replit Secret) ")
     if webhook=="":
       print(color.Red+"WebHook URL Is Empty. Please When Ask Them, Respone Them")
     elif webhook=="env":
       try:
-        webhook=os.environ['webhook']
-        open("webhook.txt", "w").write("env")
+        webhook=os.environ['WebHook']
+        open("WebHook URL.txt", "w").write("env")
       except:
         print(color.Red+"Can't Found Replit Secret!")
         webhook=""
     else:
-      open("webhook.txt", "w").write(webhook)
+      open("WebHook URL.txt", "w").write(webhook)
 
 try:
-  username=open("username.txt").read()
+  username=open("User Name.txt").read()
 except IOError:
   username=input(color.Yellow+"User Name? ")
-  open("username.txt", "w").write(username)
+  open("User Name.txt", "w").write(username)
 
 message=""
 while message=="": #Check If Message Empty
@@ -101,7 +106,7 @@ if limit==0: #For Forever
       DiscordWebhook(url=webhook, username=username, content=message, rate_limit_retry=True).execute()
     except:
       print(color.Red+"Incorrect WebHook URL! Try Again.")
-      os.remove("webhook.txt")
+      os.remove("WebHook URL.txt")
       break
     current=1+current
     print(color.Red+str(current), "Time!")
@@ -112,7 +117,7 @@ else: #Limited
       DiscordWebhook(url=webhook, username=username, content=message, rate_limit_retry=True).execute()
     except:
       print(color.Red+"Incorrect WebHook URL! Try Again.")
-      os.remove("webhook.txt")
+      os.remove("WebHook URL.txt")
       break
     current=1+current
     print(color.Red+str(current), "Time!")
