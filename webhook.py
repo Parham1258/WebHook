@@ -101,6 +101,7 @@ if limit==0: #For Forever
       DiscordWebhook(url=webhook, username=username, content=message, rate_limit_retry=True).execute()
     except:
       print(color.Red+"Incorrect WebHook URL! Try Again.")
+      os.remove("webhook.txt")
       break
     current=1+current
     print(color.Red+str(current), "Time!")
