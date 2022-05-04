@@ -121,7 +121,7 @@ else: #Limited
       break
     current=1+current
     print(color.Red+str(current), "Time!")
-    if limit>=current:
+    if limit<=current:
       print(color.Red+"Reached Limit!")
     else:
       sleep(1)
