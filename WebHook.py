@@ -76,7 +76,7 @@ except IOError:
 try:
   username=open("User Name.txt").read()
 except IOError:
-  username=input(color.Yellow+"User Name? ")
+  username=input(color.Yellow+"User Name? (Empty For Default Discord WebHook User Name) ")
   open("User Name.txt", "w").write(username)
 
 message=""
@@ -86,16 +86,21 @@ while message=="": #Check If Message Empty
     print(color.Red+"Message Is Empty. Please When Ask Them, Respone Them")
 
 limit=""
-while limit=="": #Check If Limit Empty
-  limit=input(color.Magenta+"Limit? ('0' To Forever) ")
-  if limit=="":
-    print(color.Red+"Limit Is Empty. Please When Ask Them, Respone Them")
-  else:
-    try:
-      limit=int(limit)
-    except:
-      print(color.Red+"Please Enter A Number")
-      limit=""
+try:
+  limit=open("Limit.txt").read()
+  limit=int(limit)
+except IOError:
+  while limit=="": #Check If Limit Empty
+    limit=input(color.Magenta+"Limit? ('0' To Forever) ")
+    if limit=="":
+      print(color.Red+"Limit Is Empty. Please When Ask Them, Respone Them")
+    else:
+      try:
+        limit=int(limit)
+        open("Limit.txt", "w").write(str(limit))
+      except:
+        print(color.Red+"Please Enter A Number")
+        limit=""
 
 print()
 
