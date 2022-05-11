@@ -5,7 +5,10 @@ Made By Parham
 # How To Use?
 You Can Just Run It On Replit:
 https://replit.com/@Parham125/Discord-WebHook
-Or You Can Download `WebHook.py` & `Start.bat` And Run `Start.bat` On Your Computer (Make Sure To Module `discord_webhook` Installed)
+Or You Can Run It On Your Own Computer:
+
+*Download `WebHook.py` & `Start.bat`
+*Run `Start.bat`
 
 ## IMPORTANT
 Use With Your Own Risk!
